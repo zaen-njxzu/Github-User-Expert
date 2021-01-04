@@ -1,7 +1,7 @@
 package com.zaen.githubuser.core.di
 
 import androidx.room.Room
-import com.zaen.githubuser.BuildConfig
+import com.zaen.githubuser.core.BuildConfig
 import com.zaen.githubuser.core.data.UserRepository
 import com.zaen.githubuser.core.data.source.local.LocalDataSource
 import com.zaen.githubuser.core.data.source.local.room.UserInfoDatabase

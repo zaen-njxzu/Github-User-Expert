@@ -1,6 +1,6 @@
 package com.zaen.githubuser.core.data.source.remote.network
 
-import com.zaen.githubuser.BuildConfig
+import com.zaen.githubuser.core.BuildConfig
 import com.zaen.githubuser.core.data.source.remote.response.UserDetailsResponse
 import com.zaen.githubuser.core.data.source.remote.response.FollowUserResponse
 import com.zaen.githubuser.core.data.source.remote.response.SearchUsersResponse

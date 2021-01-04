@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.zaen.githubuser.R
+import com.zaen.githubuser.core.R
+import com.zaen.githubuser.core.databinding.ItemUserInfoPreviewBinding
 import com.zaen.githubuser.core.domain.model.UserInfo
-import com.zaen.githubuser.databinding.ItemUserInfoPreviewBinding
 
 class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersInfoViewHolder>() {
 

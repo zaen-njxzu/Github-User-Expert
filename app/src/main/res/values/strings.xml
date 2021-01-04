@@ -6,9 +6,6 @@
 
     <string name="hint_github_username">Github Username</string>
 
-    <string name="item_user_username">Username</string>
-    <string name="item_user_github_link">Github link</string>
-
     <string name="user_details_username">Username</string>
     <string name="user_details_name_field">Name :</string>
     <string name="user_details_github_field">Github :</string>

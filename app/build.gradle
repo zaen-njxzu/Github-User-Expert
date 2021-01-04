@@ -25,13 +25,7 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField("String", "GITHUB_API_KEY", "\"${MY_GITHUB_USERS_KEY}\"")
-            buildConfigField("String", "GITHUB_BASE_URL", "\"https://api.github.com\"")
-        }
         release {
-            buildConfigField("String", "GITHUB_API_KEY", "\"${MY_GITHUB_USERS_KEY}\"")
-            buildConfigField("String", "GITHUB_BASE_URL", "\"https://api.github.com\"")
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -53,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
