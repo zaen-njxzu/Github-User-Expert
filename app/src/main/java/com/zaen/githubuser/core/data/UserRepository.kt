@@ -8,8 +8,8 @@ import com.zaen.githubuser.core.data.source.remote.response.UserInfoResponse
 import com.zaen.githubuser.core.domain.model.UserDetails
 import com.zaen.githubuser.core.domain.model.UserInfo
 import com.zaen.githubuser.core.domain.repository.IUserRepository
-import com.zaen.githubuser.core.utils.AppExecutors
-import com.zaen.githubuser.core.utils.DataMapper
+import com.zaen.githubuser.core.util.AppExecutors
+import com.zaen.githubuser.core.util.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

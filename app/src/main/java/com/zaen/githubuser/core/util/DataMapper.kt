@@ -1,4 +1,4 @@
-package com.zaen.githubuser.core.utils
+package com.zaen.githubuser.core.util
 
 import com.zaen.githubuser.core.data.source.local.entity.UserInfoEntity
 import com.zaen.githubuser.core.data.source.remote.response.UserDetailsResponse

@@ -1,4 +1,4 @@
-package com.zaen.githubuser.core.utils
+package com.zaen.githubuser.core.util
 
 import android.os.Handler
 import android.os.Looper

@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zaen.githubuser.GithubUsersActivity
 import com.zaen.githubuser.R
 import com.zaen.githubuser.core.ui.UsersAdapter
-import com.zaen.githubuser.core.utils.Constants.Companion.SEARCH_GITHUB_USERS_TIME_DELAY
+import com.zaen.githubuser.util.Constants.Companion.SEARCH_GITHUB_USERS_TIME_DELAY
 import com.zaen.githubuser.core.data.Resource
 import com.zaen.githubuser.databinding.FragmentSearchUsersBinding
 import kotlinx.coroutines.Job

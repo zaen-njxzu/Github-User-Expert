@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.zaen.githubuser.follow.BaseFollowFragment
 import com.zaen.githubuser.follow.FollowersFragment
 import com.zaen.githubuser.follow.FollowingsFragment
-import com.zaen.githubuser.core.utils.Constants.Companion.FOLLOW_ARG_OBJECT_USERNAME
+import com.zaen.githubuser.util.Constants.Companion.FOLLOW_ARG_OBJECT_USERNAME
 import com.zaen.githubuser.follow.constant.FollowStates
 
 class FollowPagerAdapter(fragment: Fragment, private val showItemCount: Int, private val username: String) : FragmentStateAdapter(fragment) {

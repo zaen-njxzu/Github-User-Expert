@@ -8,7 +8,7 @@ import com.zaen.githubuser.core.data.source.local.room.UserInfoDatabase
 import com.zaen.githubuser.core.data.source.remote.RemoteDataSource
 import com.zaen.githubuser.core.data.source.remote.network.ApiService
 import com.zaen.githubuser.core.domain.repository.IUserRepository
-import com.zaen.githubuser.core.utils.AppExecutors
+import com.zaen.githubuser.core.util.AppExecutors
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

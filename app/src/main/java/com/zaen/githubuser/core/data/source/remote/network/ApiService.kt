@@ -4,7 +4,7 @@ import com.zaen.githubuser.BuildConfig
 import com.zaen.githubuser.core.data.source.remote.response.UserDetailsResponse
 import com.zaen.githubuser.core.data.source.remote.response.FollowUserResponse
 import com.zaen.githubuser.core.data.source.remote.response.SearchUsersResponse
-import com.zaen.githubuser.core.utils.Constants.Companion.QUERY_PAGE_SIZE
+import com.zaen.githubuser.core.util.Constants.Companion.QUERY_PAGE_SIZE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
