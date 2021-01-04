@@ -7,7 +7,7 @@ import com.zaen.githubuser.core.domain.model.UserInfo
 import com.zaen.githubuser.core.domain.usecase.UserUseCase
 import kotlinx.coroutines.launch
 
-class FavoriteUsersViewModel(val userUseCase: UserUseCase): ViewModel() {
+class FavoriteUsersViewModel(private val userUseCase: UserUseCase): ViewModel() {
 
     val favoriteUsers = userUseCase.getSavedUsers().asLiveData()
 

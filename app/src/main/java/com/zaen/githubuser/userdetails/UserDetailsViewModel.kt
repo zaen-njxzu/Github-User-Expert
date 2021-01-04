@@ -7,7 +7,7 @@ import com.zaen.githubuser.core.domain.model.UserInfo
 import com.zaen.githubuser.core.domain.usecase.UserUseCase
 import kotlinx.coroutines.launch
 
-class UserDetailsViewModel(val userUseCase: UserUseCase): ViewModel() {
+class UserDetailsViewModel(private val userUseCase: UserUseCase): ViewModel() {
     fun getUserDetail(username: String) = userUseCase.getUserDetails(username).asLiveData()
     fun saveFavoriteUser(userInfo: UserInfo) = viewModelScope.launch {
         userUseCase.saveUser(userInfo)
