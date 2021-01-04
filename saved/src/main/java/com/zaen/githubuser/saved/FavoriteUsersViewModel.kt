@@ -1,4 +1,4 @@
-package com.zaen.githubuser.favorite
+package com.zaen.githubuser.saved
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

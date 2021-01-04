@@ -1,51 +1,52 @@
-package com.zaen.githubuser.favorite
+package com.zaen.githubuser.saved
 
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.zaen.githubuser.GithubUsersActivity
-import com.zaen.githubuser.R
 import com.zaen.githubuser.core.ui.UsersAdapter
-import com.zaen.githubuser.databinding.FragmentFavoriteUsersBinding
+import com.zaen.githubuser.detail.UserDetailsActivity
 import org.koin.android.viewmodel.ext.android.viewModel
+import androidx.lifecycle.Observer
+import com.zaen.githubuser.saved.databinding.ActivityFavoriteUsersBinding
+import com.zaen.githubuser.saved.di.savedModule
+import org.koin.core.context.loadKoinModules
 
-class FavoriteUsersFragment : Fragment() {
+class FavoriteUsersActivity : AppCompatActivity() {
 
     private val viewModel: FavoriteUsersViewModel by viewModel()
-
-    private var _binding: FragmentFavoriteUsersBinding? = null
-    private val binding get() = _binding!!
-
     private lateinit var usersInfoAdapter: UsersAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFavoriteUsersBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private var _binding: ActivityFavoriteUsersBinding? = null
+    val binding get() = _binding!!
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        setupSwipeActionDeleteUser(view)
-        setupTitleTopbar()
+        _binding = ActivityFavoriteUsersBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        loadKoinModules(savedModule)
+
+        binding.topAppBar.title = "Favorite Users"
+
+        setupSwipeActionDeleteUser()
         setupRecycleView()
         setupOnClickUserDetailsListener()
         observeAndUpdateListOfSavedUsers()
     }
 
-    private fun setupSwipeActionDeleteUser(view: View) {
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
+    private fun setupSwipeActionDeleteUser() {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
@@ -62,7 +63,7 @@ class FavoriteUsersFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val favoriteUser = usersInfoAdapter.differ.currentList[position]
                 viewModel.deleteUser(favoriteUser)
-                Snackbar.make(view, "Successfully deleted user", Snackbar.LENGTH_LONG).apply {
+                Snackbar.make(binding.root, "Successfully deleted user", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {
                         viewModel.saveUser(favoriteUser)
                     }
@@ -77,21 +78,16 @@ class FavoriteUsersFragment : Fragment() {
     }
 
     private fun observeAndUpdateListOfSavedUsers() {
-        viewModel.favoriteUsers.observe(viewLifecycleOwner, Observer { usersInfo ->
+        viewModel.favoriteUsers.observe(this, Observer { usersInfo ->
             usersInfoAdapter.differ.submitList(usersInfo)
         })
     }
 
     private fun setupOnClickUserDetailsListener() {
         usersInfoAdapter.setOnItemClickListener {
-
-            val bundle = Bundle().apply {
-                putParcelable("user_info", it)
-            }
-            findNavController().navigate(
-                R.id.action_savedUsersFragment_to_githubDetailUserFragment,
-                bundle
-            )
+            val intent = Intent(this, UserDetailsActivity::class.java)
+            intent.putExtra(UserDetailsActivity.EXTRA_DATA, it)
+            startActivity(intent)
         }
     }
 
@@ -99,11 +95,7 @@ class FavoriteUsersFragment : Fragment() {
         usersInfoAdapter = UsersAdapter()
         binding.rvUsers.apply {
             adapter = usersInfoAdapter
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = LinearLayoutManager(context)
         }
-    }
-
-    private fun setupTitleTopbar() {
-        (activity as GithubUsersActivity).binding.topAppBar.title = "Favorite Users"
     }
 }

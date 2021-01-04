@@ -1,6 +1,7 @@
-package com.zaen.githubuser.searchusers
+package com.zaen.githubuser.search
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -23,6 +24,7 @@ import com.zaen.githubuser.core.ui.UsersAdapter
 import com.zaen.githubuser.util.Constants.Companion.SEARCH_GITHUB_USERS_TIME_DELAY
 import com.zaen.githubuser.core.data.Resource
 import com.zaen.githubuser.databinding.FragmentSearchUsersBinding
+import com.zaen.githubuser.detail.UserDetailsActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -135,13 +137,9 @@ class SearchUsersFragment : Fragment() {
 
     private fun setupOnClickUserDetailsListener() {
         usersInfoAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putParcelable("user_info", it)
-            }
-            findNavController().navigate(
-                R.id.action_searchGithubUsersFragment_to_githubDetailUserFragment,
-                bundle
-            )
+            val intent = Intent(activity, UserDetailsActivity::class.java)
+            intent.putExtra(UserDetailsActivity.EXTRA_DATA, it)
+            startActivity(intent)
         }
     }
 

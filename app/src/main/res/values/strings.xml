@@ -14,4 +14,5 @@
 
     <string name="settings_alarm_nine_am">Alarm: 9:00 AM</string>
     <string name="settings_switch_alarm_text">OFF</string>
+    <string name="title_saved">saved</string>
 </resources>

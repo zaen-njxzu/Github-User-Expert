@@ -1,10 +1,11 @@
 package com.zaen.githubuser
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -16,7 +17,7 @@ class GithubUsersActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     private var _binding: ActivityGithubUsersBinding? = null
-    public val binding get() = _binding!!
+    val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,17 +46,12 @@ class GithubUsersActivity : AppCompatActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val navController = findNavController(R.id.nav_host_github_users_fragment)
-        val navOptions = NavOptions.Builder()
-            .setEnterAnim(R.anim.slide_in_right)
-            .setExitAnim(R.anim.slide_out_left)
-            .setPopEnterAnim(R.anim.slide_in_left)
-            .setPopExitAnim(R.anim.slide_out_right)
 
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.action_favorite -> {
-                    navController.navigate(R.id.savedUsersFragment, null, navOptions.build())
+                    val uri = Uri.parse("saved://favorite")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
                     true
                 }
                 else -> false

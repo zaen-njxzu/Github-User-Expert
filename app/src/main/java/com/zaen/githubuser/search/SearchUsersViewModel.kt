@@ -1,4 +1,4 @@
-package com.zaen.githubuser.searchusers
+package com.zaen.githubuser.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

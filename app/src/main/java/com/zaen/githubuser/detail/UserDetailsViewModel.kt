@@ -1,4 +1,4 @@
-package com.zaen.githubuser.userdetails
+package com.zaen.githubuser.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
