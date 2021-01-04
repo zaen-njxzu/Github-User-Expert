@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/searchGithubUsersFragment"
-        android:name="com.zaen.githubuser.ui.fragments.SearchUsersFragment"
+        android:name="com.zaen.githubuser.searchusers.SearchUsersFragment"
         android:label="fragment_search_github_users"
         tools:layout="@layout/fragment_search_users" >
         <action
@@ -21,16 +21,16 @@
     </fragment>
     <fragment
         android:id="@+id/githubDetailUserFragment"
-        android:name="com.zaen.githubuser.ui.fragments.UserDetailsFragment"
+        android:name="com.zaen.githubuser.userdetails.UserDetailsFragment"
         android:label="fragment_github_detail_user"
         tools:layout="@layout/fragment_user_details" >
         <argument
             android:name="user_info"
-            app:argType="com.zaen.githubuser.models.UserInfo" />
+            app:argType="com.zaen.githubuser.core.domain.model.UserInfo" />
     </fragment>
     <fragment
         android:id="@+id/savedUsersFragment"
-        android:name="com.zaen.githubuser.ui.fragments.FavoriteUsersFragment"
+        android:name="com.zaen.githubuser.favorite.FavoriteUsersFragment"
         android:label="fragment_saved_users"
         tools:layout="@layout/fragment_favorite_users" >
         <action
@@ -41,9 +41,4 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.zaen.githubuser.ui.fragments.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
 </navigation>
