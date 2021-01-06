@@ -8,7 +8,6 @@ import com.zaen.githubuser.core.data.source.local.room.UserInfoDatabase
 import com.zaen.githubuser.core.data.source.remote.RemoteDataSource
 import com.zaen.githubuser.core.data.source.remote.network.ApiService
 import com.zaen.githubuser.core.domain.repository.IUserRepository
-import com.zaen.githubuser.core.util.AppExecutors
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -50,6 +49,6 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<IUserRepository> { UserRepository(get(), get(), get()) }
+    // factory { AppExecutors() }
+    single<IUserRepository> { UserRepository(get(), get()) }
 }

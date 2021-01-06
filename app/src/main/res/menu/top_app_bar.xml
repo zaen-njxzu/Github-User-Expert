@@ -6,9 +6,8 @@
         android:id="@+id/action_favorite"
         android:visible="false"
         android:icon="@drawable/ic_favorite"
-        android:iconTint="@android:color/white"
-        android:title="Favorite"
-        android:contentDescription="List of Favorite User"
+        android:title="@string/action_favorite_title"
+        android:contentDescription="@string/action_favorite_desc"
         app:showAsAction="always"/>
 
 </menu>

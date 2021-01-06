@@ -10,7 +10,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.zaen.githubuser.core.ui.UsersAdapter
 import com.zaen.githubuser.detail.UserDetailsActivity
 import org.koin.android.viewmodel.ext.android.viewModel
-import androidx.lifecycle.Observer
 import com.zaen.githubuser.saved.databinding.ActivityFavoriteUsersBinding
 import com.zaen.githubuser.saved.di.savedModule
 import org.koin.core.context.loadKoinModules
@@ -78,7 +77,7 @@ class FavoriteUsersActivity : AppCompatActivity() {
     }
 
     private fun observeAndUpdateListOfSavedUsers() {
-        viewModel.favoriteUsers.observe(this, Observer { usersInfo ->
+        viewModel.favoriteUsers.observe(this, { usersInfo ->
             usersInfoAdapter.differ.submitList(usersInfo)
         })
     }

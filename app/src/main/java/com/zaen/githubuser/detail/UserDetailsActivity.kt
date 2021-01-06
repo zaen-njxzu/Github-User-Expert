@@ -12,7 +12,6 @@ import com.zaen.githubuser.core.domain.model.UserInfo
 import com.zaen.githubuser.databinding.ActivityUserDetailsBinding
 import com.zaen.githubuser.follow.constant.FollowStates
 import com.zaen.githubuser.follow.pager.FollowPagerAdapter
-import androidx.lifecycle.Observer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -30,7 +29,7 @@ class UserDetailsActivity : AppCompatActivity() {
     }
 
     private var _binding: ActivityUserDetailsBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,7 +86,7 @@ class UserDetailsActivity : AppCompatActivity() {
     }
 
     private fun observeAndUpdateUserDetails(userInfo: UserInfo) {
-        viewModel.getUserDetail(userInfo.username).observe(this, Observer { response ->
+        viewModel.getUserDetail(userInfo.username).observe(this, { response ->
             when(response) {
                 is Resource.Success -> {
                     hideProgressBar()
@@ -115,12 +114,11 @@ class UserDetailsActivity : AppCompatActivity() {
         })
     }
 
-    fun String.toDateString() : String {
+    private fun String.toDateString() : String {
         val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
         val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
         try {
-            val output = formatter.format(parser.parse(this))
-            return output
+            return formatter.format(parser.parse(this))
         }catch (e: ParseException) {
             e.printStackTrace()
         }

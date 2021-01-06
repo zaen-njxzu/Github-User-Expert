@@ -8,15 +8,13 @@ import com.zaen.githubuser.core.data.source.remote.response.UserInfoResponse
 import com.zaen.githubuser.core.domain.model.UserDetails
 import com.zaen.githubuser.core.domain.model.UserInfo
 import com.zaen.githubuser.core.domain.repository.IUserRepository
-import com.zaen.githubuser.core.util.AppExecutors
 import com.zaen.githubuser.core.util.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class UserRepository(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
 ): IUserRepository{
     override fun searchUsers(
         usernameQuery: String,

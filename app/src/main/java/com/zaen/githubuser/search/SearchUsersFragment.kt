@@ -14,8 +14,6 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zaen.githubuser.GithubUsersActivity
@@ -74,7 +72,7 @@ class SearchUsersFragment : Fragment() {
     }
 
     private fun observeAndUpdateListOfUsers(query: String) {
-        viewModel.searchUsers(query).observe(viewLifecycleOwner, Observer { response ->
+        viewModel.searchUsers(query).observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
                     hideProgressBar()
@@ -143,7 +141,7 @@ class SearchUsersFragment : Fragment() {
         }
     }
 
-    val scrollListener = object : RecyclerView.OnScrollListener() {
+    private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
             if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {

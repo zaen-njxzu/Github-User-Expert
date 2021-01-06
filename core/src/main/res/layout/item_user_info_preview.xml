@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardUseCompatPadding="true"
-        app:cardCornerRadius="6dp"
-        android:elevation="20dp">
+        app:cardCornerRadius="6dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
                 android:id="@+id/cvProfileImage"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:elevation="6dp"
                 app:cardCornerRadius="30dp"
                 android:layout_centerHorizontal="true"
                 android:innerRadius="0dp"
@@ -41,8 +39,10 @@
                 android:id="@+id/tvUsername"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
                 android:ellipsize="end"
                 android:text="@string/item_user_username"
                 android:textColor="@android:color/black"
@@ -59,6 +59,8 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="4dp"
                 android:ellipsize="end"
                 android:text="@string/item_user_github_link"
                 android:textColor="@android:color/black"

@@ -12,7 +12,7 @@
     <string name="user_details_repos_field">Repos :</string>
     <string name="user_details_created_at_field">From :</string>
 
-    <string name="settings_alarm_nine_am">Alarm: 9:00 AM</string>
-    <string name="settings_switch_alarm_text">OFF</string>
     <string name="title_saved">saved</string>
+    <string name="action_favorite_title">Favorite</string>
+    <string name="action_favorite_desc">List of Favorite User</string>
 </resources>

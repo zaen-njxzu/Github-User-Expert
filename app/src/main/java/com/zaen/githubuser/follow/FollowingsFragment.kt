@@ -3,7 +3,6 @@ package com.zaen.githubuser.follow
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.zaen.githubuser.util.Constants
 import com.zaen.githubuser.core.data.Resource
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -34,7 +33,7 @@ class FollowingsFragment : BaseFollowFragment() {
     }
 
     private fun observeAndUpdateFollowingUser(username: String) {
-        viewModel.getFollowingsData(username).observe(viewLifecycleOwner, Observer { response ->
+        viewModel.getFollowingsData(username).observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
                     hideProgressBar()

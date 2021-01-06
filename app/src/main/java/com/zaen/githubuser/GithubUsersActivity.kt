@@ -6,11 +6,9 @@ import android.os.Bundle
 
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.zaen.githubuser.databinding.ActivityGithubUsersBinding
+import com.zaen.githubuser.search.SearchUsersFragment
 
 class GithubUsersActivity : AppCompatActivity() {
 
@@ -24,6 +22,18 @@ class GithubUsersActivity : AppCompatActivity() {
         _binding = ActivityGithubUsersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val mFragmentManager = supportFragmentManager
+
+        val mSearchUsersFragment = SearchUsersFragment()
+        val fragment = mFragmentManager.findFragmentByTag(SearchUsersFragment::class.java.simpleName)
+
+        if (fragment !is SearchUsersFragment) {
+            mFragmentManager
+                .beginTransaction()
+                .add(R.id.frame_container, mSearchUsersFragment, SearchUsersFragment::class.java.simpleName)
+                .commit()
+        }
+
         setSupportActionBar(binding.topAppBar)
         setupAppbarConfiguration()
     }
@@ -31,10 +41,6 @@ class GithubUsersActivity : AppCompatActivity() {
     private fun setupAppbarConfiguration() {
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.action_favorite))
-
-        val navController = findNavController(R.id.nav_host_github_users_fragment)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.topAppBar.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
