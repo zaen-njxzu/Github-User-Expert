@@ -12,7 +12,7 @@ jobs:
           key: android-orb-v1-
       - run:
           name: Inject Environtment
-          command: sudo chmod +x ./environmentSetup.sh && ./environmentSetup.sh && copyEnvVarsToGradleProperties
+          command: sudo chmod +x ./environmentSetup.sh && source environmentSetup.sh && copyEnvVarsToGradleProperties
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
