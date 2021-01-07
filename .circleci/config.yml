@@ -2,10 +2,6 @@ version: 2.1
  
 orbs:
   android: circleci/android@0.2.1
-
-dependencies:
-  pre:
-      - source environmentSetup.sh && copyEnvVarsToGradleProperties
       
 jobs:
   build:
@@ -14,6 +10,9 @@ jobs:
       - checkout
       - restore_cache:
           key: android-orb-v1-
+      - run:
+          name: Inject Environtment
+          command: sudo chmod +x ./environmentSetup.sh && ./environmentSetup.sh && copyEnvVarsToGradleProperties
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
