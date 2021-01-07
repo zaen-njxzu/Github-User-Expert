@@ -8,6 +8,8 @@ import com.zaen.githubuser.core.data.source.local.room.UserInfoDatabase
 import com.zaen.githubuser.core.data.source.remote.RemoteDataSource
 import com.zaen.githubuser.core.data.source.remote.network.ApiService
 import com.zaen.githubuser.core.domain.repository.IUserRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,11 +22,15 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<UserInfoDatabase>().getUserInfoDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes(BuildConfig.MY_DB_KEY.toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             UserInfoDatabase::class.java,
             "UserInfo.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
