@@ -22,6 +22,9 @@ class GithubUsersActivity : AppCompatActivity() {
         _binding = ActivityGithubUsersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.topAppBar)
+        setupAppbarConfiguration()
+
         val mFragmentManager = supportFragmentManager
 
         val mSearchUsersFragment = SearchUsersFragment()
@@ -34,8 +37,6 @@ class GithubUsersActivity : AppCompatActivity() {
                 .commit()
         }
 
-        setSupportActionBar(binding.topAppBar)
-        setupAppbarConfiguration()
     }
 
     private fun setupAppbarConfiguration() {

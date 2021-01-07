@@ -28,6 +28,7 @@ buildscript {
     ext.viewpager_version = "1.0.0"
     ext.safeargs_version = "2.3.0-alpha04"
     ext.navigation_version = "2.2.1"
+    ext.leakcanary_version = "2.4"
 
     repositories {
         google()
