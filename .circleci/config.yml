@@ -11,6 +11,9 @@ jobs:
       - restore_cache:
           key: android-orb-v1-
       - run:
+          name: Make dir for gradle injection
+          command: sudo chmod +w mkdir ~/.gradle -p
+      - run:
           name: Inject Environtment
           command: sudo chmod +x ./environmentSetup.sh && source environmentSetup.sh && copyEnvVarsToGradleProperties
       - run:
